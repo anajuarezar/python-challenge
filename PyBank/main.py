@@ -11,11 +11,20 @@ pybank_path = os.path.join('Resources', 'Lessons_03-Python_Homework_Instructions
 
 with open(pybank_path) as csvfile:
     reader = csv.reader(csvfile, delimiter=",")
+# We remove the header so it won't take it into consideration when it does any operations
     csv_header = next(csvfile)
+# Because every row is a different month, we can count the rows in order to find out how many months there are. 
     totalmonth = len(list(reader))
 
- 
+#To know the total of profits and losses. We first need to start the counter
+    for row in reader:
+        profit = 0
+        profit =+ int(row[1])
 
+
+ 
+#We print everything. 
 print("Financial Analysis")
 print("--------------------------------------------")
 print(f"Total Months: {totalmonth}")
+print(f"Total: ${profit}")
