@@ -17,9 +17,17 @@ with open(pybank_path) as csvfile:
     totalmonth = len(list(reader))
 
 #To know the total of profits and losses. We first need to start the counter
-    for row in reader:
-        profit = 0
-        profit =+ int(row[1])
+    profit = 0
+    row = list(reader)
+    
+    for x in row:
+        profit.append(row[1])
+    
+    total_profit = sum(profit)
+
+
+
+       
 
 
  
@@ -27,4 +35,4 @@ with open(pybank_path) as csvfile:
 print("Financial Analysis")
 print("--------------------------------------------")
 print(f"Total Months: {totalmonth}")
-print(f"Total: ${profit}")
+print(f"Total: ${total_profit}")
