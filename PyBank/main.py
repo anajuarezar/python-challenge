@@ -9,19 +9,13 @@ pybank_path = os.path.join('Resources', 'Lessons_03-Python_Homework_Instructions
 
 #Then we bring the file and specify the delimitations. 
 
-with open(pybank_path) as cvsfile:
-    reader = csv.reader(cvsfile, delimiter=",")
+with open(pybank_path) as csvfile:
+    reader = csv.reader(csvfile, delimiter=",")
+    csv_header = next(csvfile)
+    totalmonth = len(list(reader))
 
-#we must separat the header so it will start in the next line
-    totalmonths = []
-
-    for row in reader:
-        month = row[0].split(" ")
-    
-    
-
-totalmonths = jan + feb + mar + abr + may + jun + july + august + sept + oct + nov + dec 
+ 
 
 print("Financial Analysis")
 print("--------------------------------------------")
-print(f"Total Months: {totalmonths}")
+print(f"Total Months: {totalmonth}")
