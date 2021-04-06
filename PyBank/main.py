@@ -22,7 +22,17 @@ with open(pybank_path, 'r') as csvfile:
     profit = 0
     for line in reader:
         profit = profit + int(line[1])
-        print(profit)
+
+
+with open(pybank_path, 'r') as csvfile:
+    reader = csv.reader(csvfile, delimiter=',')
+    header = next(csvfile)
+    profitlist = []
+    for line in reader:
+        profitlist.append(int(line[1]))
+        max_profit = max(profitlist)
+
+
   
 
        
@@ -47,3 +57,5 @@ with open(pybank_path, 'r') as csvfile:
 print("Financial Analysis")
 print("--------------------------------------------")
 print(f"Total Months: {totalmonth}")
+print(f"Total: ${profit}")
+print(f"Greatest Increase in Profit: {max_profit}")
