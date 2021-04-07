@@ -17,8 +17,17 @@ with open(poll_path, 'r') as csvfile:
     for row in reader:
         names_dict = row[2]
         poll[names_dict] = row[1:]
-   
     
+
+with open(poll_path, 'r') as csvfile:
+    reader = csv.reader(csvfile, delimiter=',')
+    header = next(reader)
+    khan = []
+    for row in reader:
+        if row[2] == "Khan":
+            khan.append(row[2])
+    print(khan)
+
 
     
 print(dict.keys(poll))
