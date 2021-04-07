@@ -11,7 +11,7 @@ pybank_path = os.path.join('Resources', 'Lessons_03-Python_Homework_Instructions
 
 with open(pybank_path, 'r') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
-    header = next(csvfile)
+    header = next(reader)
     totalmonth = len(list(reader))
 
   
@@ -33,7 +33,6 @@ with open(pybank_path, 'r') as csvfile:
     lowest_profit = {"date": first_row[0] , "profit": int(first_row[1])}
     highest_profit = {"date": first_row[0], "profit": int(first_row[1])}
     profitlist = []
-    print(first_row)
     for line in reader:
         change_profit = int(line[1]) - preview_val
         if change_profit < lowest_profit["profit"]:
@@ -90,3 +89,4 @@ print(f"Total: ${profit}")
 print(f"Average Change: ${average}")
 print(f"Greatest Increase in Profit: {highest_profit['date']} {highest_profit['profit']}")
 print(f"Greatest Decrease in Profit: {lowest_profit['date']} {lowest_profit['profit']}")
+
