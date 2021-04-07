@@ -12,11 +12,18 @@ with open(poll_path, 'r') as csvfile:
 
 with open(poll_path, 'r') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
-    poll_dict = {}
-    khan = []
+    header = next(reader)
+    poll = {}
     for row in reader:
-        key = row[2]
-        poll_dict[key] = row[1:]
+        names_dict = row[2]
+        poll[names_dict] = row[1:]
+   
+    
+
+    
+print(dict.keys(poll))
+
+
 
 
 
@@ -31,4 +38,4 @@ print("Elections Results")
 print("--------------------------------")
 print(f"Total Votes: {totalvotes}")
 print("--------------------------------")
-Print(f"Khan: {khan_count}")
+
