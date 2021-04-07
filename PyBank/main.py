@@ -31,6 +31,7 @@ with open(pybank_path, 'r') as csvfile:
     first_row = next(reader)
     preview_val = int(first_row[1])
     lowest_profit = {"date": first_row[0] , "profit": int(first_row[1])}
+    highest_profit = {"date": first_row[0], "profit": int(first_row[1])}
     profitlist = []
     print(first_row)
     for line in reader:
@@ -41,14 +42,25 @@ with open(pybank_path, 'r') as csvfile:
         preview_val = int(line[1])
         profitlist.append(change_profit)
     
-    max_profit = max(profitlist)    
-    print(max_profit)
-    print(profitlist)
+
     average = sum(profitlist) / len(profitlist)
-    print(average)
-    min_profit = min(profitlist)
-    print(lowest_profit)
-    print(min_profit)
+
+
+with open(pybank_path, 'r') as csvfile:
+    reader = csv.reader(csvfile, delimiter=',')
+    next(reader)
+    first_row = next(reader)
+    preview_val = int(first_row[1])
+    highest_profit = {"date": first_row[0], "profit": int(first_row[1])}
+    profitlist = []
+    print(first_row)
+    for line in reader:
+        change_profit = int(line[1]) - preview_val
+        if change_profit > highest_profit["profit"]:
+            highest_profit["date"] = line[0]
+            highest_profit["profit"] = change_profit
+        preview_val = int(line[1])
+        profitlist.append(change_profit)
 
   
 
@@ -75,4 +87,6 @@ print("Financial Analysis")
 print("--------------------------------------------")
 print(f"Total Months: {totalmonth}")
 print(f"Total: ${profit}")
+print(f"Average Change: ${average}")
+print(f"Greatest Increase in Profit: {highest_profit['date']} {highest_profit['profit']}")
 print(f"Greatest Decrease in Profit: {lowest_profit['date']} {lowest_profit['profit']}")
