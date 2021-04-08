@@ -51,7 +51,7 @@ with open(pybank_path, 'r') as csvfile:
         profitlist.append(change_profit)
     
 #Once we have the list, we find the average with the sum of the list and the lenght of the list.
-    average = sum(profitlist) / len(profitlist)
+    average = round(sum(profitlist) / len(profitlist), 2)
 
 #We do the same to find max value. 
 with open(pybank_path, 'r') as csvfile:
