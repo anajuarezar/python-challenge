@@ -61,3 +61,18 @@ print(f"Li: {li_perc}% ({votes_li})")
 print(f"O'Tooley: {tooley_perc}% ({votes_tooley})")
 print("--------------------------------")
 print(f"{winner_cand(candidates)}")
+
+
+output_path = os.path.join("Analysis", "poll_result.csv")
+with open (output_path, "w") as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=",")
+    csvwriter.writerow(["Elections Results"])
+    csvwriter.writerow(["---------------------------"])
+    csvwriter.writerow([f"Total Votes: {totalvotes}"])
+    csvwriter.writerow(["--------------------------------"])
+    csvwriter.writerow([f"Khan: {khan_percentage}% ({votes_khan})"])
+    csvwriter.writerow([f"Correy: {correy_perc}% ({votes_correy})"])
+    csvwriter.writerow([f"Li: {li_perc}% ({votes_li})"])
+    csvwriter.writerow([f"O'Tooley: {tooley_perc}% ({votes_tooley})"])
+    csvwriter.writerow(["--------------------------------"])
+    csvwriter.writerow([f"{winner_cand(candidates)}"])
